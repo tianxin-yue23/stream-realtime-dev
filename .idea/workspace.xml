@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e67ac91-729b-42e0-b004-83b1eaad8e4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/Flink01_yuxin_li.uWK1uQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/dev_realtime_v1_tianxin_yue.67ypSg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/dev_realtime_v1_tianxin_yue.67ypSg.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/74510672-e9e3-4357-b363-debf092ec567/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f33b1621-2a50-491e-b3c2-763ce8e38248.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/dependency-reduced-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/base/BaseApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/base/BaseSQLApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/CartAddUuBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/DimJoinFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TableProcessDim.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TableProcessDwd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TradePaymentBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TradeProvinceOrderBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TradeSkuOrderBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TrafficHomeDetailPageViewBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TrafficPageViewBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/UserLoginBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/constant/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/AsyncDimFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/BeanToJsonStrMapFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/CustomStringSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/DimAsyncFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/DimFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/DateFormatUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/FlinkSinkUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/FlinkSourceUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/HBaseUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/JdbcUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/RedisUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/Sqlutil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/dependency-reduced-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dim/app/dimApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dim/function/HBaseSinkFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dim/function/TableProcessFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdBaselog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdInteractionCommentInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeCartAdd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderCancelDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderPaySucDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderRefund.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeRefundPaySucDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/basedb/app/DwdBaseDb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/basedb/function/BaseDbTableProcessFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeCartAddUuWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradePaymentSucWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeProvinceOrderWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeSkuOrderWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficHomeDetailPageViewWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficVcChArIsNewPageViewWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsUserUserLoginWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/sourcekey/app/DwsTrafficSourceKeywordPageViewWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/sourcekey/function/KeywordUDTF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/sourcekey/util/KeywordUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/ods/flinkcdc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/realtime-v1/src/main/resources/log4j.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="C:\back\apache-maven-3.8.6\reposityory" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../back/apache-maven-3.8.6" />
+        <option name="userSettingsFile" value="C:\back\apache-maven-3.8.6\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2vOS3hoH5OSVLbK7YYR22QdlG4a" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "C:/workpace/2207A/stream-realtime-dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "hive"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\workpace\2207A\stream-realtime-dev" />
+      <recent name="C:\workpace\2207A\stream-realtime-dev\realtime-v1\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\workpace\2207A\stream-realtime-dev\realtime-v1\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DwsTrafficHomeDetailPageViewWindow">
+    <configuration name="DwsTradePaymentSucWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradePaymentSucWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTradePaymentSucWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradePaymentSucWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTradePaymentSucWindow (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradePaymentSucWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTradePaymentSucWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradePaymentSucWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsTrafficHomeDetailPageViewWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTrafficHomeDetailPageViewWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DwsTrafficHomeDetailPageViewWindow" />
+        <item itemvalue="Application.DwsTradePaymentSucWindow (3)" />
+        <item itemvalue="Application.DwsTradePaymentSucWindow (2)" />
+        <item itemvalue="Application.DwsTradePaymentSucWindow (1)" />
+        <item itemvalue="Application.DwsTradePaymentSucWindow" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e67ac91-729b-42e0-b004-83b1eaad8e4c" name="Changes" comment="" />
+      <created>1744014431673</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744014431673</updated>
+      <workItem from="1744014432686" duration="10830000" />
+      <workItem from="1744072215374" duration="34188000" />
+      <workItem from="1744158713788" duration="29493000" />
+      <workItem from="1744245027683" duration="16896000" />
+      <workItem from="1744269909843" duration="16826000" />
+      <workItem from="1744331437024" duration="30279000" />
+      <workItem from="1744417961224" duration="5805000" />
+      <workItem from="1744540637538" duration="11806000" />
+      <workItem from="1744590617950" duration="36225000" />
+      <workItem from="1744677061024" duration="33886000" />
+      <workItem from="1744763492356" duration="28995000" />
+      <workItem from="1744847612684" duration="24295000" />
+      <workItem from="1744936341265" duration="3610000" />
+      <workItem from="1744947270322" duration="9680000" />
+      <workItem from="1744966722526" duration="6559000" />
+      <workItem from="1745022709346" duration="3030000" />
+      <workItem from="1745145174868" duration="12264000" />
+      <workItem from="1745193625515" duration="25175000" />
+      <workItem from="1745279328766" duration="9108000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
