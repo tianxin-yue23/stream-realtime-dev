@@ -293,8 +293,8 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                 120,
                 TimeUnit.SECONDS
         );
-//      withC1DS.print();
-        withC1DS.map(new BeanToJsonStrMapFunction<>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_sku_order_window"));
+      withC1DS.print();
+//        withC1DS.map(new BeanToJsonStrMapFunction<>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_sku_order_window"));
     }
 }

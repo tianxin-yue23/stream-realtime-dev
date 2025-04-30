@@ -3,34 +3,21 @@ package com.ytx.retail.v1.realtime.dim.app;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.ververica.cdc.connectors.mysql.source.MySqlSource;
-import com.ververica.cdc.connectors.mysql.table.StartupOptions;
-import com.ververica.cdc.debezium.JsonDebeziumDeserializationSchema;
 import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.bean.TableProcessDim;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.FlinkSourceUtil;
 import com.ytx.retail.v1.realtime.common.util.HBaseUtil;
-import com.ytx.retail.v1.realtime.dim.function.HBaseSinkFunction;
 import com.ytx.retail.v1.realtime.dim.function.TableProcessFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.functions.RichMapFunction;
-import org.apache.flink.api.common.serialization.SimpleStringSchema;
-import org.apache.flink.api.common.state.BroadcastState;
 import org.apache.flink.api.common.state.MapStateDescriptor;
-import org.apache.flink.api.common.state.ReadOnlyBroadcastState;
-
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
-import org.apache.flink.connector.kafka.source.KafkaSource;
-import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
-import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.*;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.ProcessFunction;
-import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction;
-import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.util.Collector;
 import org.apache.hadoop.hbase.client.Connection;
 
@@ -40,7 +27,6 @@ public class dimApp extends BaseApp {
     public static void main(String[] args) throws Exception {
       new dimApp().start(10001,4,"my_group",Constant.TOPIC_DB);
     }
-
     @Override
     public void handle(StreamExecutionEnvironment env, DataStreamSource<String> kafkaSource) {
         SingleOutputStreamOperator<JSONObject> jsonobjds = kafkaSource.process(new ProcessFunction<String, JSONObject>() {
@@ -52,12 +38,11 @@ public class dimApp extends BaseApp {
             }
         });
      jsonobjds.print();
-
 //  配置表读取
         SingleOutputStreamOperator<TableProcessDim> tpds = readTableprocess(env);
 //        tpds.print();
         //TODO 根据配置表中的配置信息到HBase中执行建表或者删除表操作
-        tpds=tpds.map(new RichMapFunction<TableProcessDim, TableProcessDim>() {
+        tpds.map(new RichMapFunction<TableProcessDim, TableProcessDim>() {
             private Connection hbaseConn;
             @Override
             public void open(Configuration parameters) throws Exception {
@@ -75,9 +60,9 @@ public class dimApp extends BaseApp {
                 String sinkTable = tp.getSinkTable();
                 String[] sinkFamilies = tp.getSinkFamily().split(",");
                 if ("d".equals(op)){
+
                     HBaseUtil.dropHBaseTable(hbaseConn, Constant.HBASE_NAMESPACE,sinkTable);
                 }else if ("r".equals(op)||"c".equals(op)){
-
                     HBaseUtil.createHBaseTable(hbaseConn,Constant.HBASE_NAMESPACE,sinkTable,sinkFamilies);
                 }else {
                     HBaseUtil.dropHBaseTable(hbaseConn, Constant.HBASE_NAMESPACE,sinkTable);
@@ -129,5 +114,6 @@ public class dimApp extends BaseApp {
             }
         }).setParallelism(1);
         return tpds;
+
     }
 }

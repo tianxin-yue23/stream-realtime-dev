@@ -6,7 +6,6 @@ import com.ververica.cdc.connectors.mysql.source.MySqlSource;
 import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.bean.TableProcessDwd;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
-import com.ytx.retail.v1.realtime.common.util.FlinkSinkUtil;
 import com.ytx.retail.v1.realtime.common.util.FlinkSourceUtil;
 import com.ytx.retail.v1.realtime.dwd.basedb.function.BaseDbTableProcessFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
@@ -19,7 +18,6 @@ import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.ProcessFunction;
-import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction;
 import org.apache.flink.util.Collector;
 
 /*
@@ -45,7 +43,6 @@ public class DwdBaseDb extends BaseApp {
             }
         });
 //        jsonobj.print();
-
 //        使用flinkcdc读取配置表中的配置信息
         MySqlSource<String> mySqlSource = FlinkSourceUtil.getMySqlSource("realtime_v1_config", "table_process_dwd");
 //      读取数据封装为流
@@ -77,6 +74,6 @@ public class DwdBaseDb extends BaseApp {
         SingleOutputStreamOperator<Tuple2<JSONObject, TableProcessDwd>> process = connectDS.process(new BaseDbTableProcessFunction(mapStateDescriptor));
 //        将处理逻辑比较简单的事实表数据写到kafka的不同主题中
         process.print();
-//        process.sinkTo(FlinkSinkUtil.getKafkaSink());
+//       process.sinkTo(FlinkSinkUtil.getKafkaSink());
     }
 }

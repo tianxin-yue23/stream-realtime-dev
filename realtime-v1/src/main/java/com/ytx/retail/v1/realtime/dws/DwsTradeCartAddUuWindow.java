@@ -46,6 +46,7 @@ public class DwsTradeCartAddUuWindow extends BaseApp {
 
             @Override
             public void open(Configuration parameters) throws Exception {
+//                初始化状态变量
                 ValueStateDescriptor<String> valueStateDescriptor =
                         new ValueStateDescriptor<>("lastCartDateState", String.class);
                 valueStateDescriptor.enableTimeToLive(StateTtlConfig.newBuilder(Time.days(1)).build());

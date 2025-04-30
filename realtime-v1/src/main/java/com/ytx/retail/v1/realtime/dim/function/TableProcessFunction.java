@@ -3,7 +3,6 @@ package com.ytx.retail.v1.realtime.dim.function;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ytx.retail.v1.realtime.common.bean.TableProcessDim;
-import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.JdbcUtil;
 import org.apache.flink.api.common.state.BroadcastState;
 import org.apache.flink.api.common.state.MapStateDescriptor;
@@ -12,7 +11,6 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.co.BroadcastProcessFunction;
 import org.apache.flink.util.Collector;
-
 import java.sql.*;
 import java.util.HashMap;
 import java.util.List;

@@ -56,9 +56,7 @@ public class DwsUserUserLoginWindow extends BaseApp {
         KeyedStream<JSONObject, String> keyedDS = filterDs.keyBy(jsonObj -> jsonObj.getJSONObject("common").getString("uid"));
 //        keyedDS.print();
         //      使用Flink的状态编程  判断是否为独立用户以及回流用户
-        SingleOutputStreamOperator<UserLoginBean> beanDs = keyedDS.process(new
-                                                                                   KeyedProcessFunction<String,
-                                                                                           JSONObject, UserLoginBean>() {
+        SingleOutputStreamOperator<UserLoginBean> beanDs = keyedDS.process(new KeyedProcessFunction<String, JSONObject, UserLoginBean>() {
             private ValueState<String> lastLoginDateState;
             @Override
             public void open(Configuration parameters) throws Exception {
