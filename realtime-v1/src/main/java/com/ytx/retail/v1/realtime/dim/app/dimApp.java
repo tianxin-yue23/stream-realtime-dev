@@ -73,8 +73,6 @@ public class dimApp extends BaseApp {
         });
 
 //    tpds.print();
-
-
         //将配置流中的配置信息进行广播---broadcast
         MapStateDescriptor<String, TableProcessDim> mapStateDescriptor =
                 new MapStateDescriptor<String, TableProcessDim>("mapStateDescriptor", String.class, TableProcessDim.class);
@@ -96,7 +94,7 @@ public class dimApp extends BaseApp {
 
         DataStream<String> mySQLds= env
                 .fromSource(mySqlSource, WatermarkStrategy.noWatermarks(), "MySQL Source");
-//      mySQLds.print();
+      mySQLds.print();
 //        配置流数据转换
         SingleOutputStreamOperator<TableProcessDim> tpds = mySQLds.map(new MapFunction<String, TableProcessDim>() {
             @Override
@@ -114,6 +112,5 @@ public class dimApp extends BaseApp {
             }
         }).setParallelism(1);
         return tpds;
-
     }
 }

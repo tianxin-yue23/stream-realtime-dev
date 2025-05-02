@@ -8,7 +8,9 @@ import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-
+/*
+互动域评论事务事实表
+ */
 public class DwdInteractionCommentInfo extends BaseSQLApp {
 
     public static void main(String[] args) throws Exception {
@@ -34,7 +36,6 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 "  'format' = 'json'\n" +
                 ")");
 //           tableEnv.executeSql("select * from topic_db_yue").print();
-        tableEnv.sqlQuery("select * from topic_db_yue where source['table']='order_refund_info'").execute().print();
 
         Table commentInfo = tableEnv.sqlQuery("select\n" +
                 "             `after`['id'] id,\n" +
@@ -63,7 +64,7 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 "    ON c.appraise = dic.dic_code");
 //        joinTable.execute().print();
 //        写到kafka
-     /*  tableEnv.executeSql("CREATE TABLE "+Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO+"(\n" +
+  tableEnv.executeSql("CREATE TABLE "+Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO+"(\n" +
                 " id STRING,\n" +
                 "  user_id STRING,\n" +
                 "sku_id STRING,\n" +
@@ -75,7 +76,6 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 " )"+Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO));
        joinTable.executeInsert(Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO);
 
-      */
 
 //    env.execute();
     }

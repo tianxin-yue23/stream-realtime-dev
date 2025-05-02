@@ -5,7 +5,9 @@ import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.Sqlutil;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-
+/*
+交易域加购事务事实表
+ */
 public class DwdTradeCartAdd extends BaseSQLApp {
     public static void main(String[] args) {
         new DwdTradeCartAdd().start(10007,4, Constant.TOPIC_DB);

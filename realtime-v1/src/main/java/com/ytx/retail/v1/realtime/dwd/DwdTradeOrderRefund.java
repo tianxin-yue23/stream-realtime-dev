@@ -1,6 +1,5 @@
 package com.ytx.retail.v1.realtime.dwd;
 
-import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.base.BaseSQLApp;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.Sqlutil;
@@ -101,7 +100,6 @@ public class DwdTradeOrderRefund extends BaseSQLApp {
                         "ts_ms bigint ," +
                         "PRIMARY KEY (id) NOT ENFORCED " +
                         ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_ORDER_REFUND));
-
 
       result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_REFUND);
 

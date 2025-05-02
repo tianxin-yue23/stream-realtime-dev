@@ -26,7 +26,6 @@ public class DwdBaselog extends BaseApp {
     public static void main(String[] args) throws Exception {
         new DwdBaselog().start(10011,4,"my_group", Constant.TOPIC_LOG);
     }
-
     @Override
     public void handle(StreamExecutionEnvironment env, DataStreamSource<String> kafkaSource) {
         OutputTag<String> dirtyTag = new OutputTag<String>("dirtyTag"){};
@@ -42,7 +41,7 @@ public class DwdBaselog extends BaseApp {
                 }
             }
         });
-//        jsonObjDs.print("标准json");
+//     jsonObjDs.print("标准json");
         SideOutputDataStream<String> dirtyDs = jsonObjDs.getSideOutput(dirtyTag);
 //        dirtyDs.print("脏数据");
 //        对新老访客标记进行修复
