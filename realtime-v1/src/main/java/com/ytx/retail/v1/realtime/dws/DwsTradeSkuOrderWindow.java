@@ -175,7 +175,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
         );
 
 //       withSkuInfoDS.print();
-//        TODO 10.关联spu维度
+//        关联spu维度
         SingleOutputStreamOperator<TradeSkuOrderBean> withSpuInfoDS = AsyncDataStream.unorderedWait(
                 withSkuInfoDS,
                 new DimAsyncFunction<TradeSkuOrderBean>() {
