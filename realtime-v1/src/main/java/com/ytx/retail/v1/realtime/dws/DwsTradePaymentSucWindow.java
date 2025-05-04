@@ -122,7 +122,7 @@ public class DwsTradePaymentSucWindow extends BaseApp {
             }
         });
         reduceDs.print();
-        reduceDs.map(new BeanToJsonStrMapFunction<>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_payment_suc_window"));
+//        reduceDs.map(new BeanToJsonStrMapFunction<>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_payment_suc_window"));
     }
 }

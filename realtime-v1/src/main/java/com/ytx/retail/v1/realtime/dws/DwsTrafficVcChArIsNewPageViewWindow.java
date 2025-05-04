@@ -127,12 +127,12 @@ public class DwsTrafficVcChArIsNewPageViewWindow extends BaseApp {
                         out.collect(pageViewBean);
                     }
                 });
-//          reduceDs.print();
+          reduceDs.print();
 //        8.将聚合的结果写到Doris表
 
         //在向Doris写数据前，将流中统计的实体类对象转换为json格式字符串
-     reduceDs.map(new BeanToJsonStrMapFunction<TrafficPageViewBean>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_traffic_vc_ch_ar_is_new_page_view_window"));
+//     reduceDs.map(new BeanToJsonStrMapFunction<TrafficPageViewBean>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_traffic_vc_ch_ar_is_new_page_view_window"));
 
     }
 }

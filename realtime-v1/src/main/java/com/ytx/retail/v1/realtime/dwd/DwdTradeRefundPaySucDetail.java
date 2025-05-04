@@ -1,10 +1,9 @@
 package com.ytx.retail.v1.realtime.dwd;
 
-import com.ytx.retail.v1.realtime.common.base.BaseApp;
+
 import com.ytx.retail.v1.realtime.common.base.BaseSQLApp;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.Sqlutil;
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
