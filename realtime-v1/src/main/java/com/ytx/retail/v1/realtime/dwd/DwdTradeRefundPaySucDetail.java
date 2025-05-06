@@ -89,7 +89,7 @@ public class DwdTradeRefundPaySucDetail extends BaseSQLApp {
                         "on rp.order_id=oi.id " +
                         "join base_dic for system_time as of rp.pt as dic " +
                         "on rp.payment_type=dic.dic_code ");
-//        result.execute().print();
+        result.execute().print();
         tableEnv.executeSql("create table "+Constant.TOPIC_DWD_TRADE_REFUND_PAYMENT_SUCCESS+"(" +
                 "id string," +
                 "user_id string," +
@@ -105,7 +105,7 @@ public class DwdTradeRefundPaySucDetail extends BaseSQLApp {
                 "ts bigint ," +
                 "PRIMARY KEY (id) NOT ENFORCED " +
                 ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_REFUND_PAYMENT_SUCCESS));
-        result.executeInsert(Constant.TOPIC_DWD_TRADE_REFUND_PAYMENT_SUCCESS);
+//        result.executeInsert(Constant.TOPIC_DWD_TRADE_REFUND_PAYMENT_SUCCESS);
 
     }
 }

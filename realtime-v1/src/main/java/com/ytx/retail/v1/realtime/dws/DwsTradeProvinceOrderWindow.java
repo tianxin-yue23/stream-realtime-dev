@@ -5,8 +5,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.bean.TradeProvinceOrderBean;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
+import com.ytx.retail.v1.realtime.common.function.BeanToJsonStrMapFunction;
 import com.ytx.retail.v1.realtime.common.function.DimAsyncFunction;
 import com.ytx.retail.v1.realtime.common.util.DateFormatUtil;
+import com.ytx.retail.v1.realtime.common.util.FlinkSinkUtil;
 import org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.MapFunction;
@@ -142,7 +144,7 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
                     }
                 }
         );
-       reduceDS.print();
+//       reduceDS.print();
 //        关联省份维度
         SingleOutputStreamOperator<TradeProvinceOrderBean> withProvinceDs = AsyncDataStream.unorderedWait(reduceDS, new DimAsyncFunction<TradeProvinceOrderBean>() {
                     @Override
@@ -164,8 +166,8 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
         );
         withProvinceDs.print();
 //        写到doris
-//      withProvinceDs.map(new BeanToJsonStrMapFunction<>())
-//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_province_order_window"));
+      withProvinceDs.map(new BeanToJsonStrMapFunction<>())
+                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_province_order_window"));
 
     }
 }

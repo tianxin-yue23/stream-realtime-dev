@@ -11,6 +11,7 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 public class DwdTradeOrderCancelDetail extends BaseSQLApp {
     public static void main(String[] args) {
+
         new DwdTradeOrderCancelDetail().start(10015,4, Constant.TOPIC_DB);
     }
 
@@ -72,7 +73,7 @@ public class DwdTradeOrderCancelDetail extends BaseSQLApp {
                         "from dwd_trade_order_detail od " +
                         "join order_cancel oc " +
                         "on od.order_id=oc.id ");
-//       result.execute().print();
+      result.execute().print();
 
         // 将关联的结果写到kafka主题中
         tableEnv.executeSql(
@@ -97,7 +98,7 @@ public class DwdTradeOrderCancelDetail extends BaseSQLApp {
                         "PRIMARY KEY (id) NOT ENFORCED " +
                         ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_ORDER_CANCEL));
 
-       result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_CANCEL);
+//       result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_CANCEL);
 
     }
 }

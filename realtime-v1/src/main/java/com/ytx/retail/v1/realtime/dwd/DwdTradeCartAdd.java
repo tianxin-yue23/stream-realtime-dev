@@ -30,7 +30,7 @@ public class DwdTradeCartAdd extends BaseSQLApp {
                 "and (op='c' or (op='u' and `before`['sku_num'] is not null and (cast(`after`['sku_num'] as int)>\n" +
                 "cast(`before`['sku_num'] as int)))\n" +
                 ")");
-//       cartInfo.execute().print();
+       cartInfo.execute().print();
 //         过滤出加购数据写到kafka主题
         tableEnv.executeSql(" create table "+Constant.TOPIC_DWD_TRADE_CART_ADD+"(\n" +
                 "    id string,\n" +
@@ -41,6 +41,6 @@ public class DwdTradeCartAdd extends BaseSQLApp {
                 "    PRIMARY KEY (id) NOT ENFORCED\n" +
                 " )" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_CART_ADD));
         //写入
-        cartInfo.executeInsert(Constant.TOPIC_DWD_TRADE_CART_ADD);
+//        cartInfo.executeInsert(Constant.TOPIC_DWD_TRADE_CART_ADD);
     }
 }

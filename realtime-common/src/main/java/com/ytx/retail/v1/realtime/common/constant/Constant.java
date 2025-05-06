@@ -6,14 +6,14 @@ public class Constant {
     public static final String TOPIC_DB = "tianxin_yueyw";
     public static final String TOPIC_LOG = "tianxin_yue_log";
 
-    public static final String MYSQL_HOST = "10.39.48.36";
+    public static final String MYSQL_HOST = "10.160.60.17";
     public static final int MYSQL_PORT = 3306;
     public static final String MYSQL_USER_NAME = "root";
     public static final String MYSQL_PASSWORD = "Zh1028,./";
     public static final String HBASE_NAMESPACE = "ns_tianxin_yue";
 
     public static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
-    public static final String MYSQL_URL = "jdbc:mysql://10.39.48.36:3306?useSSL=false";
+    public static final String MYSQL_URL = "jdbc:mysql://10.160.60.17:3306?useSSL=false";
 
     public static final String TOPIC_DWD_TRAFFIC_START = "tianxin_yue_dwd_traffic_start";
     public static final String TOPIC_DWD_TRAFFIC_ERR = "tianxin_yue_dwd_traffic_err";
@@ -35,8 +35,8 @@ public class Constant {
 
     public static final String TOPIC_DWD_USER_REGISTER = "dwd_user_register";
 
-    public static final String DORIS_FE_NODES = "10.39.48.33:8030";
+    public static final String DORIS_FE_NODES = "10.160.60.14:8030";
 
-    public static final String DORIS_DATABASE = "realtime_v1_xuanye_chang";
+    public static final String DORIS_DATABASE = "realtime_v2_tianxin_yue";
 
 }

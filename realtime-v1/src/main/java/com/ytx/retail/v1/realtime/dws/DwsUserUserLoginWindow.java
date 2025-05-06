@@ -91,7 +91,7 @@ public class DwsUserUserLoginWindow extends BaseApp {
                     lastLoginDateState.update(curLoginDate);
                 }
                 if (uuCt != 0L || backCt != 0L) {
-                    out.collect(new UserLoginBean("",  "", backCt, uuCt, ts));
+                    out.collect(new UserLoginBean("",  "","", backCt, uuCt, ts));
                 }
             }
           }
@@ -136,7 +136,7 @@ public class DwsUserUserLoginWindow extends BaseApp {
                 }
         );
         reduceDs.print();
-        reduceDs
+       reduceDs
                 .map(new BeanToJsonStrMapFunction<>())
                 .sinkTo(FlinkSinkUtil.getDorisSink("dws_user_user_login_window"));
     }

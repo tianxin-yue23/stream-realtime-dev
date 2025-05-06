@@ -109,15 +109,15 @@ public class DwsTradeCartAddUuWindow extends BaseApp {
                     public void apply(TimeWindow window, Iterable<Long> values, Collector<CartAddUuBean> out) throws Exception {
                         Long cartUUct = values.iterator().next();
                         String stt = DateFormatUtil.tsToDateTime(window.getStart());
-//                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
+                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
                         String curDate = DateFormatUtil.tsToDate(window.getStart());
-                        out.collect(new CartAddUuBean(stt, curDate, cartUUct));
+                        out.collect(new CartAddUuBean(stt,edt,curDate, cartUUct));
                     }
                 }
         );
         aggregate.print();
-        aggregate.map(new BeanToJsonStrMapFunction<>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_cart_add_uu_window"));
+//       aggregate.map(new BeanToJsonStrMapFunction<>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_cart_add_uu_window"));
 
     }
 }

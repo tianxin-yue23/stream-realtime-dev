@@ -12,7 +12,7 @@ public class UserLoginBean {
     // 窗口起始时间
     String stt;
     // 窗口终止时间
-//   String edt;
+   String edt;
     // 当天日期
     String curDate;
     // 回流用户数

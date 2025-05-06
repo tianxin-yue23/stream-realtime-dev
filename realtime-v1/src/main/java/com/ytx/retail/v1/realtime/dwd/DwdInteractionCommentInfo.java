@@ -62,7 +62,7 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 "FROM comment_info AS c\n" +
                 "  JOIN base_dic FOR SYSTEM_TIME AS OF c.pt AS dic\n" +
                 "    ON c.appraise = dic.dic_code");
-//        joinTable.execute().print();
+        joinTable.execute().print();
 //        写到kafka
   tableEnv.executeSql("CREATE TABLE "+Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO+"(\n" +
                 " id STRING,\n" +
@@ -74,7 +74,7 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 "ts_ms bigint,\n" +
                "  PRIMARY KEY (id) NOT ENFORCED\n" +
                 " )"+Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO));
-       joinTable.executeInsert(Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO);
+//       joinTable.executeInsert(Constant.TOPIC_DWD_INTERACTION_COMMENT_INFO);
 
 
 //    env.execute();

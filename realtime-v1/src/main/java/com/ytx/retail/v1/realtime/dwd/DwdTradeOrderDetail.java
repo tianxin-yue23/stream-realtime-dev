@@ -94,7 +94,7 @@ public class DwdTradeOrderDetail extends BaseSQLApp {
                         "left join order_detail_coupon cou " +
                         "on od.id=cou.order_detail_id ");
 
-//         result.execute().print();
+         result.execute().print();
 //        tableEnv.sqlQuery("select after['create_time'] from topic_db_yue where source['table']='order_detail'").execute().print();
 
 //            写到kafka
@@ -120,6 +120,6 @@ public class DwdTradeOrderDetail extends BaseSQLApp {
                         "PRIMARY KEY (id) NOT ENFORCED " +
                         ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_ORDER_DETAIL));
 
-      result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_DETAIL);
+//      result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_DETAIL);
     }
 }

@@ -3,7 +3,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.ytx.retail.v1.realtime.common.bean.DimJoinFunction;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.HBaseUtil;
-import io.lettuce.core.api.StatefulRedisConnection;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.async.ResultFuture;
 import org.apache.flink.streaming.api.functions.async.RichAsyncFunction;

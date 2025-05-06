@@ -17,7 +17,7 @@ public class flinkcdc {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // enable checkpoint
-//        env.enableCheckpointing(3000);
+        env.enableCheckpointing(3000);
         env.setParallelism(4);
         Properties prop = new Properties();
         prop.put("useSSL","false");
@@ -32,7 +32,7 @@ public class flinkcdc {
                 .tableList("realtime_v1.*") // 设置捕获的表
                 .username("root")
                 .password("Zh1028,./")
-              .startupOptions(StartupOptions.earliest())  // 从最早位点启动
+              .startupOptions(StartupOptions.initial())  // 从最早位点启动
 //            .startupOptions(StartupOptions.latest()) // 从最晚位点启动
                 .debeziumProperties(prop)
                 .deserializer(new JsonDebeziumDeserializationSchema()) // 将 SourceRecord 转换为 JSON 字符串
@@ -50,7 +50,7 @@ public class flinkcdc {
                 )
                 .setDeliveryGuarantee(DeliveryGuarantee.AT_LEAST_ONCE)
                 .build();
-       mySQLSource.sinkTo(sink);
+      mySQLSource.sinkTo(sink);
 
         env.execute("Print MySQL Snapshot + Binlog");
     }

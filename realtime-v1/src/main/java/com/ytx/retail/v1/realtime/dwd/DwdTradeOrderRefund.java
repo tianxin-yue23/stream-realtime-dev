@@ -7,7 +7,9 @@ import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 import java.time.Duration;
-
+/*
+交易域退单事务事实表
+ */
 public class DwdTradeOrderRefund extends BaseSQLApp {
     public static void main(String[] args) {
         new DwdTradeOrderRefund().start(10017,4, Constant.TOPIC_DB);
@@ -78,7 +80,7 @@ public class DwdTradeOrderRefund extends BaseSQLApp {
                         "on ri.refund_type=dic1.dic_code " +
                         "join base_dic for system_time as of ri.pt as dic2 " +
                         "on ri.refund_reason_type=dic2.dic_code ");
-//        result.execute().print();
+        result.execute().print();
         // 5. 写出到 kafka
 
       tableEnv.executeSql(

@@ -113,7 +113,7 @@ public class DwsTrafficHomeDetailPageViewWindow extends BaseApp {
         AllWindowedStream<TrafficHomeDetailPageViewBean, TimeWindow> windowDS = withWatermarkD
                 .windowAll(TumblingEventTimeWindows.of(org.apache.flink.streaming.api.windowing
                         .time.Time.seconds(3)));
-//        //TODO 7.聚合
+//        // 7.聚合
         SingleOutputStreamOperator<TrafficHomeDetailPageViewBean> reduceDS = windowDS.reduce(
                 new ReduceFunction<TrafficHomeDetailPageViewBean>() {
                     @Override
@@ -137,9 +137,9 @@ public class DwsTrafficHomeDetailPageViewWindow extends BaseApp {
                     }
                 }
         );
-//        //TODO 8.将聚合的结果写到Doris
+//        // 8.将聚合的结果写到Doris
         reduceDS.print();
-//没数据
+
         reduceDS
                 .map(new BeanToJsonStrMapFunction<TrafficHomeDetailPageViewBean>())
                 .sinkTo(FlinkSinkUtil.getDorisSink("dws_traffic_home_detail_page_view_window"));

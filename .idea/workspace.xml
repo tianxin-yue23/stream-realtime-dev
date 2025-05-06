@@ -5,12 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e67ac91-729b-42e0-b004-83b1eaad8e4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/img/img2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/report/0504.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/CartAddUuBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/CartAddUuBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TrafficPageViewBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/TrafficPageViewBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/UserLoginBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/bean/UserLoginBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/constant/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/constant/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/DimAsyncFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/function/DimAsyncFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/FlinkSinkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-common/src/main/java/com/ytx/retail/v1/realtime/common/util/FlinkSinkUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dim/app/dimApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dim/app/dimApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdInteractionCommentInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdInteractionCommentInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeCartAdd.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeCartAdd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderCancelDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderCancelDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderPaySucDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderPaySucDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderRefund.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeOrderRefund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeRefundPaySucDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dwd/DwdTradeRefundPaySucDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradePaymentSucWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradePaymentSucWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeCartAddUuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeCartAddUuWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradePaymentSucWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeProvinceOrderWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeProvinceOrderWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeSkuOrderWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTradeSkuOrderWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficHomeDetailPageViewWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficHomeDetailPageViewWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficVcChArIsNewPageViewWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsTrafficVcChArIsNewPageViewWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsUserUserLoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/DwsUserUserLoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/sourcekey/app/DwsTrafficSourceKeywordPageViewWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/dws/sourcekey/app/DwsTrafficSourceKeywordPageViewWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/ods/flinkcdc.java" beforeDir="false" afterPath="$PROJECT_DIR$/realtime-v1/src/main/java/com/ytx/retail/v1/realtime/ods/flinkcdc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +96,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -103,38 +121,10 @@
       <recent name="C:\workpace\2207A\stream-realtime-dev\realtime-v1\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DwsTrafficVcChArIsNewPageViewWindow">
-    <configuration name="DwdTradeOrderCancelDetail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.DwsTradeCartAddUuWindow">
+    <configuration name="DwsTradeCartAddUuWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dwd.DwdTradeOrderCancelDetail" />
-      <module name="realtime-v1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dwd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DwsTradePaymentSucWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradePaymentSucWindow" />
-      <module name="realtime-v1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DwsTradeProvinceOrderWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradeProvinceOrderWindow" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTradeCartAddUuWindow" />
       <module name="realtime-v1" />
       <extension name="coverage">
         <pattern>
@@ -160,9 +150,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DwsTrafficHomeDetailPageViewWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTrafficHomeDetailPageViewWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DwsTrafficVcChArIsNewPageViewWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsTrafficVcChArIsNewPageViewWindow" />
+      <module name="realtime-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ytx.retail.v1.realtime.dws.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DwsUserUserLoginWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.ytx.retail.v1.realtime.dws.DwsUserUserLoginWindow" />
       <module name="realtime-v1" />
       <extension name="coverage">
         <pattern>
@@ -182,11 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DwsTradeCartAddUuWindow" />
+        <item itemvalue="Application.DwsUserUserLoginWindow" />
         <item itemvalue="Application.DwsTrafficVcChArIsNewPageViewWindow" />
-        <item itemvalue="Application.DwsTradePaymentSucWindow" />
-        <item itemvalue="Application.DwsTradeProvinceOrderWindow" />
+        <item itemvalue="Application.DwsTrafficHomeDetailPageViewWindow" />
         <item itemvalue="Application.DwsTradeSkuOrderWindow" />
-        <item itemvalue="Application.DwdTradeOrderCancelDetail" />
       </list>
     </recent_temporary>
   </component>
@@ -233,7 +251,14 @@
       <workItem from="1745978733041" duration="4936000" />
       <workItem from="1746165703590" duration="8424000" />
       <workItem from="1746248506033" duration="7394000" />
-      <workItem from="1746335742891" duration="4554000" />
+      <workItem from="1746335742891" duration="10817000" />
+      <workItem from="1746403354765" duration="8339000" />
+      <workItem from="1746428723453" duration="11800000" />
+      <workItem from="1746489623138" duration="1108000" />
+      <workItem from="1746490997277" duration="32000" />
+      <workItem from="1746491110276" duration="15000" />
+      <workItem from="1746491396901" duration="5467000" />
+      <workItem from="1746519406925" duration="649000" />
     </task>
     <task id="LOCAL-00001" summary="2025.4.22">
       <option name="closed" value="true" />
@@ -267,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746261802391</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2025.5.04">
+      <option name="closed" value="true" />
+      <created>1746353386926</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746353386926</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +328,8 @@
     <MESSAGE value="2025.4.30" />
     <MESSAGE value="2025.5.2" />
     <MESSAGE value="2025.5.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="2025.5.3" />
+    <MESSAGE value="2025.5.04" />
+    <option name="LAST_COMMIT_MESSAGE" value="2025.5.04" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

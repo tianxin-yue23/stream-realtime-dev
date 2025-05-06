@@ -65,7 +65,7 @@ public class FlinkSinkUtil {
             DorisSink<String> sink = DorisSink.<String>builder()
                     .setDorisReadOptions(DorisReadOptions.builder().build())
                     .setDorisOptions(DorisOptions.builder() // 设置 doris 的连接参数
-                            .setFenodes("10.39.48.33:8030")
+                            .setFenodes("10.160.60.14:8030")
                             .setTableIdentifier(Constant.DORIS_DATABASE + "." + tableName)
                             .setUsername("admin")
                             .setPassword("zh1028,./")

@@ -5,8 +5,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.bean.TradeSkuOrderBean;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
+import com.ytx.retail.v1.realtime.common.function.BeanToJsonStrMapFunction;
 import com.ytx.retail.v1.realtime.common.function.DimAsyncFunction;
 import com.ytx.retail.v1.realtime.common.util.DateFormatUtil;
+import com.ytx.retail.v1.realtime.common.util.FlinkSinkUtil;
 import org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.MapFunction;
@@ -291,7 +293,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                 TimeUnit.SECONDS
         );
       withC1DS.print();
-//        withC1DS.map(new BeanToJsonStrMapFunction<>())
-//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_sku_order_window"));
+       withC1DS.map(new BeanToJsonStrMapFunction<>())
+                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_sku_order_window"));
     }
 }

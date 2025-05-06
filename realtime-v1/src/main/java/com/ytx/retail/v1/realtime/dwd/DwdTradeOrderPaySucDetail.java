@@ -85,8 +85,8 @@ public class DwdTradeOrderPaySucDetail extends BaseSQLApp {
                         "and od.et <= pi.et + interval '5' second " +
                         "join base_dic for system_time as of pi.pt as dic " +
                         "on pi.payment_type=dic.dic_code ");
-//        result.execute().print();
-     /*   tableEnv.executeSql("create table "+Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS+"(" +
+        result.execute().print();
+        tableEnv.executeSql("create table "+Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS+"(" +
                 "order_detail_id string," +
                 "order_id string," +
                 "user_id string," +
@@ -110,6 +110,6 @@ public class DwdTradeOrderPaySucDetail extends BaseSQLApp {
 
         result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS);
 
-      */
+
     }
 }

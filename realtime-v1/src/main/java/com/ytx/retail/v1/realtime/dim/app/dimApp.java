@@ -84,7 +84,7 @@ public class dimApp extends BaseApp {
                 new TableProcessFunction(mapStateDescriptor)
 
         );
-//        dimDs.print();
+        dimDs.print();
 //       dimDs.addSink(new HBaseSinkFunction());
 
     }
