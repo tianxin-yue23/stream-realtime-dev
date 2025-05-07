@@ -1,0 +1,2 @@
+Main-Class: com.retailersv1.dfsfsf
+Class-Path: lib/dependency1.jar lib/dependency2.jar lib/dependency3.jar
