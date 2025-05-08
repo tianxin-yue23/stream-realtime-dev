@@ -5,6 +5,7 @@ public class Constant {
 
     public static final String TOPIC_DB = "tianxin_yueyw";
     public static final String TOPICGL = "realtime_v2_db";
+    public static final String TOPICOMMONT = "kafka_comment_tianxinyue";
     public static final String TOPIC_LOG = "tianxin_yue_log";
 
     public static final String MYSQL_HOST = "10.160.60.17";

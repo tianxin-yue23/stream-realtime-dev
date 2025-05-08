@@ -42,7 +42,7 @@ public class DwdBaseDb extends BaseApp {
                 }
             }
         });
-//        jsonobj.print();
+//       jsonobj.print();
 //        使用flinkcdc读取配置表中的配置信息
         MySqlSource<String> mySqlSource = FlinkSourceUtil.getMySqlSource("realtime_v1_config", "table_process_dwd");
 //      读取数据封装为流
@@ -63,7 +63,13 @@ public class DwdBaseDb extends BaseApp {
                 return tp;
             }
         });
-//       tpDS.print();
+//     tpDS.print();
+        /*
+        工具域优惠券领取事务事实表
+        工具域优惠券使用（下单+支付）事务事实表
+        互动域收藏商品事务事实表
+        用户域用户注册事务事实表
+         */
 //        对配置流进行广播
         MapStateDescriptor<String, TableProcessDwd> mapStateDescriptor = new MapStateDescriptor<String, TableProcessDwd>("mapStateDescriptor",
                 String.class, TableProcessDwd.class);
@@ -73,7 +79,7 @@ public class DwdBaseDb extends BaseApp {
 //        对关联后的数据进行处理
         SingleOutputStreamOperator<Tuple2<JSONObject, TableProcessDwd>> process = connectDS.process(new BaseDbTableProcessFunction(mapStateDescriptor));
 //        将处理逻辑比较简单的事实表数据写到kafka的不同主题中
-        process.print();
+       process.print();
 //       process.sinkTo(FlinkSinkUtil.getKafkaSink());
     }
 }

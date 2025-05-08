@@ -1,7 +1,7 @@
 package com.stream.utils;
 
-import static com.stream.utils.SiliconFlowApi.generateBadReview;
 
+import static com.stream.utils.SiliconFlowApi.generateBadReview;
 
 public class CommonGenerateTempLate {
 

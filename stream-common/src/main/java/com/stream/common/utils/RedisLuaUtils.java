@@ -12,20 +12,14 @@ import redis.clients.jedis.exceptions.JedisException;
 import java.net.URI;
 import java.util.*;
 
-/**
- * @Package com.stream.common.utils.RedisUtils.java
- * @Author zhou.han
- * @Date 2025/3/29 23:09
- * @description: Lua check redis words
- */
 
 public class RedisLuaUtils {
     private static final Logger logger = LoggerFactory.getLogger(RedisLuaUtils.class);
-    private static final String REDIS_HOST = ConfigUtils.getString("redis.host");
-    private static final int REDIS_PORT = ConfigUtils.getInt("redis.port");
-    private static final String REDIS_USER = ConfigUtils.getString("redis.user");
-    private static final String REDIS_PASSWORD = ConfigUtils.getString("redis.pwd");
-    private static final int REDIS_DB = ConfigUtils.getInt("redis.blacklist.db");
+    private static final String REDIS_HOST = "10.160.60.17";
+    private static final int REDIS_PORT = 6379;
+    private static final String REDIS_USER = "default";
+    private static final String REDIS_PASSWORD ="zh1028";
+    private static final int REDIS_DB = 0;
     private static final String SET_KEY = "sensitive_words";
 
     // Lua脚本（支持批量/单条查询）

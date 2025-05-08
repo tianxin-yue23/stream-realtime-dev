@@ -40,9 +40,7 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
                 "dws_trade_province_order_window",
                 Constant.TOPIC_DWD_TRADE_ORDER_DETAIL
         );
-
     }
-
     @Override
     public void handle(StreamExecutionEnvironment env, DataStreamSource<String> kafkaSource) {
         SingleOutputStreamOperator<JSONObject> jsonObjDs = kafkaSource.process(new ProcessFunction<String, JSONObject>() {
@@ -122,6 +120,7 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
 //      聚合
         SingleOutputStreamOperator<TradeProvinceOrderBean> reduceDS = windowDS.reduce(
                 new ReduceFunction<TradeProvinceOrderBean>() {
+//                    累加订单金额合并订单id
                     @Override
                     public TradeProvinceOrderBean reduce(TradeProvinceOrderBean value1, TradeProvinceOrderBean value2) throws Exception {
                         value1.setOrderAmount(value1.getOrderAmount().add(value2.getOrderAmount()));

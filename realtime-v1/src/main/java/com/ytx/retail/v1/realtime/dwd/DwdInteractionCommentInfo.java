@@ -1,15 +1,13 @@
 package com.ytx.retail.v1.realtime.dwd;
 
-import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.base.BaseSQLApp;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.Sqlutil;
-import org.apache.flink.streaming.api.CheckpointingMode;
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 /*
-互动域评论事务事实表
+ * 互动域评论事务事实表处理类
+ * 从Kafka消费评论数据，关联字典表，生成评论事实表写入Kafka
  */
 public class DwdInteractionCommentInfo extends BaseSQLApp {
 

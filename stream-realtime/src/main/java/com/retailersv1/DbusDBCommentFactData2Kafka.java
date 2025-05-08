@@ -6,7 +6,6 @@ import com.retailersv1.func.AsyncHbaseDimBaseDicFunc;
 import com.retailersv1.func.IntervalJoinOrderCommentAndOrderInfoFunc;
 import com.stream.common.utils.ConfigUtils;
 import com.stream.common.utils.DateTimeUtils;
-import com.stream.common.utils.EnvironmentSettingUtils;
 import com.stream.common.utils.KafkaUtils;
 import com.stream.utils.CommonGenerateTempLate;
 import com.stream.utils.SensitiveWordsUtils;
@@ -30,6 +29,7 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+
 /**
  * @Package com.retailersv1.DbusDBCommentFactData2Kafka
  * @Author zhou.han
@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
  * null
  * 1,1.1
  */
-public class dfsfsf {
+public class DbusDBCommentFactData2Kafka {
 
     private static final ArrayList<String> sensitiveWordsLists;
 
@@ -90,7 +90,7 @@ public class dfsfsf {
                 .map(JSON::parseObject)
                 .filter(json -> json.getJSONObject("source").getString("table").equals("comment_info"))
                 .keyBy(json -> json.getJSONObject("after").getString("appraise"));
-        filteredStream.print();
+//        filteredStream.print();
         DataStream<JSONObject> enrichedStream = AsyncDataStream
                 .unorderedWait(
                         filteredStream,
@@ -164,10 +164,10 @@ public class dfsfsf {
                 .between(Time.minutes(-1), Time.minutes(1))
                 .process(new IntervalJoinOrderCommentAndOrderInfoFunc())
                 .uid("interval_join_order_comment_and_order_info_func").name("interval_join_order_comment_and_order_info_func");
-//        orderMsgAllDs.print();
+//       orderMsgAllDs.print();
 
 //        对连接后的数据进行映射
-        SingleOutputStreamOperator<JSONObject> supplementDataMap = orderMsgAllDs.map(new RichMapFunction<JSONObject, JSONObject>() {
+      SingleOutputStreamOperator<JSONObject> supplementDataMap = orderMsgAllDs.map(new RichMapFunction<JSONObject, JSONObject>() {
             @Override
             public JSONObject map(JSONObject jsonObject) {
                 jsonObject.put("commentTxt", CommonGenerateTempLate.GenerateComment(jsonObject.getString("dic_name"),
@@ -176,7 +176,7 @@ public class dfsfsf {
             }
         }).uid("map-generate_comment").name("map-generate_comment");
 
-//        supplementDataMap.print();
+        supplementDataMap.print("====>");
 //        以 20% 的概率在评论内容中添加随机敏感词
         SingleOutputStreamOperator<JSONObject> suppleMapDs = supplementDataMap.map(new RichMapFunction<JSONObject, JSONObject>() {
             private transient Random random;
@@ -204,14 +204,15 @@ public class dfsfsf {
             }
         }).uid("add json ds").name("add json ds");
 
-     /*   suppleTimeFieldDs.map(js -> js.toJSONString())
-                .sinkTo(
-                KafkaUtils.buildKafkaSink(kafka_botstrap_servers, kafka_db_fact_comment_topic)
-        ).uid("kafka_db_fact_comment_sink").name("kafka_db_fact_comment_sink");
+suppleTimeFieldDs.print();
+//       suppleTimeFieldDs.map(js -> js.toJSONString())
+//                .sinkTo(
+//                KafkaUtils.buildKafkaSink( Constant.KAFKA_BROKERS,
+//                        Constant.TOPICOMMONT)
+//        );
 
-      */
 
 
-        env.execute();
+       env.execute();
     }
 }

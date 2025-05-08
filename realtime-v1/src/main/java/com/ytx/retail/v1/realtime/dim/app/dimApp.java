@@ -41,7 +41,7 @@ public class dimApp extends BaseApp {
 //  配置表读取
         SingleOutputStreamOperator<TableProcessDim> tpds = readTableprocess(env);
 //        tpds.print();
-        //TODO 根据配置表中的配置信息到HBase中执行建表或者删除表操作
+        // 根据配置表中的配置信息到HBase中执行建表或者删除表操作
         tpds.map(new RichMapFunction<TableProcessDim, TableProcessDim>() {
             private Connection hbaseConn;
             @Override
@@ -94,7 +94,7 @@ public class dimApp extends BaseApp {
 
         DataStream<String> mySQLds= env
                 .fromSource(mySqlSource, WatermarkStrategy.noWatermarks(), "MySQL Source");
-      mySQLds.print();
+//      mySQLds.print();
 //        配置流数据转换
         SingleOutputStreamOperator<TableProcessDim> tpds = mySQLds.map(new MapFunction<String, TableProcessDim>() {
             @Override

@@ -1,7 +1,6 @@
 package com.ytx.retail.v1.realtime.dwd.basedb.function;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ytx.retail.v1.realtime.common.bean.TableProcessDim;
 import com.ytx.retail.v1.realtime.common.bean.TableProcessDwd;
 import com.ytx.retail.v1.realtime.common.util.JdbcUtil;
 import org.apache.flink.api.common.state.BroadcastState;
@@ -16,6 +15,7 @@ import java.util.*;
 
 public class BaseDbTableProcessFunction extends BroadcastProcessFunction<JSONObject, TableProcessDwd, Tuple2<JSONObject,TableProcessDwd>> {
   private MapStateDescriptor<String,TableProcessDwd> mapStateDescriptor;
+//  存储配置表信息
   private Map<String,TableProcessDwd> configMap=new HashMap<>();
 
     public BaseDbTableProcessFunction(MapStateDescriptor<String, TableProcessDwd> mapStateDescriptor) {
@@ -68,7 +68,6 @@ public class BaseDbTableProcessFunction extends BroadcastProcessFunction<JSONObj
       BroadcastState<String, TableProcessDwd> broadcastState = ctx.getBroadcastState(mapStateDescriptor);
 //      获取业务数据表名
         String sourceTable = tp.getSourceTable();
-
         if ("d".equals(op)){
         broadcastState.remove(sourceTable);
         configMap.remove(sourceTable);

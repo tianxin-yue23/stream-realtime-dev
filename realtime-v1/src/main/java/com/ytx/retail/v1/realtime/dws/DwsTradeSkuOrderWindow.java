@@ -56,6 +56,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
             public void open(Configuration parameters) throws Exception {
                 ValueStateDescriptor<JSONObject> valueStateDescriptor =
                         new ValueStateDescriptor<>("lastJsonObjState", JSONObject.class);
+//                   // 设置状态TTL为10秒
                 valueStateDescriptor.enableTimeToLive(StateTtlConfig.newBuilder(Time.seconds(10)).build());
                 lastJsonObjState = getRuntimeContext().getState(valueStateDescriptor);
             }
@@ -64,6 +65,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
             public void processElement(JSONObject jsonObj, KeyedProcessFunction<String, JSONObject, JSONObject>.Context ctx, Collector<JSONObject> out) throws Exception {
                 JSONObject lastJsonObj = lastJsonObjState.value();
                 if (lastJsonObj != null) {
+                    // 如果有上一次的同id数据，做抵消处理（金额字段取负数）
                     String splitOriginalAmount = lastJsonObj.getString("split_original_amount");
                     String splitCouponAmount = lastJsonObj.getString("split_coupon_amount");
                     String splitActivityAmount = lastJsonObj.getString("split_activity_amount");
@@ -120,10 +122,10 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
 
 //    分组
         KeyedStream<TradeSkuOrderBean, String> skuIdKeyedDs = beanDs.keyBy(TradeSkuOrderBean::getSkuId);
-//        开窗
+//        全局开窗（1秒滚动窗口）
         AllWindowedStream<TradeSkuOrderBean, TimeWindow> windowDS  =
                 skuIdKeyedDs.windowAll(TumblingEventTimeWindows.of(org.apache.flink.streaming.api.windowing.time.Time.seconds(1)));
-//        聚合
+//        聚合（窗口内同sku的金额累加），并补充窗口时间字段
         SingleOutputStreamOperator<TradeSkuOrderBean> reduceDs = windowDS.reduce(new ReduceFunction<TradeSkuOrderBean>() {
             @Override
             public TradeSkuOrderBean reduce(TradeSkuOrderBean value1, TradeSkuOrderBean value2) throws Exception {
@@ -152,6 +154,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                 }
         );
 //   reduceDs.print();
+//        维度关联：异步查维表，补充sku相关信息
         SingleOutputStreamOperator<TradeSkuOrderBean> withSkuInfoDS = AsyncDataStream.unorderedWait(
                 reduceDs,
                 new DimAsyncFunction<TradeSkuOrderBean>() {
@@ -160,7 +163,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                         orderBean.setSkuName(dimJsonObj.getString("sku_name"));
                         orderBean.setSpuId(dimJsonObj.getString("spu_id"));
                         orderBean.setCategory3Id(dimJsonObj.getString("category3_id"));
-                        orderBean.setTrademarkId(dimJsonObj.getString("tm_id"));
+                         orderBean.setTrademarkId(dimJsonObj.getString("tm_id"));
                     }
                     @Override
                     public String getTableName() {

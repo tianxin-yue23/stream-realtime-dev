@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.ytx.retail.v1.realtime.common.bean.TableProcessDim;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.HBaseUtil;
-import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;

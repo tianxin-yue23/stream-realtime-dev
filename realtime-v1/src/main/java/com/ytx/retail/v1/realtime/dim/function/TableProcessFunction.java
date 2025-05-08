@@ -61,6 +61,7 @@ public class TableProcessFunction extends BroadcastProcessFunction<JSONObject, T
     //            主流数据
     @Override
     public void processElement(JSONObject jsonObject, BroadcastProcessFunction<JSONObject, TableProcessDim, Tuple2<JSONObject,TableProcessDim>>.ReadOnlyContext readOnlyContext, Collector<Tuple2<JSONObject,TableProcessDim>> collector) throws Exception {
+//        广播状态中获取当前处理数据对应的表配置信息
         ReadOnlyBroadcastState<String, TableProcessDim> state = readOnlyContext.getBroadcastState(mapStateDescriptor);
         String table = jsonObject.getJSONObject("source").getString("table");
         TableProcessDim tableProcessDim = state.get(table);
