@@ -46,6 +46,12 @@ public class DwdInteractionCommentInfo extends BaseSQLApp {
                 "from topic_db_yue where source['table']='comment_info'");
 //        commentInfo.execute().print();
         tableEnv.createTemporaryView("comment_info",commentInfo);
+        /*
+         * 创建HBase字典维度表
+         * 表结构：
+         * - dic_code: 字典编码(主键)
+         * - info: 字典信息(ROW类型，包含dic_name字段)
+         */
         tableEnv.executeSql("CREATE TABLE base_dic (\n" +
                 " dic_code string,\n" +
                 " info ROW<dic_name string>,\n" +

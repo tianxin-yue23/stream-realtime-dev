@@ -4,11 +4,10 @@ import com.ytx.retail.v1.realtime.common.base.BaseApp;
 import com.ytx.retail.v1.realtime.common.base.BaseSQLApp;
 import com.ytx.retail.v1.realtime.common.constant.Constant;
 import com.ytx.retail.v1.realtime.common.util.Sqlutil;
-import org.apache.flink.streaming.api.datastream.DataStreamSource;
-import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
-
+//交易域取消订单事务事实表
 public class DwdTradeOrderCancelDetail extends BaseSQLApp {
     public static void main(String[] args) {
 

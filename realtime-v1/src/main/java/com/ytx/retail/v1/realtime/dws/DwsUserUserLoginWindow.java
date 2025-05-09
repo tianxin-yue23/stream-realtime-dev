@@ -126,10 +126,10 @@ public class DwsUserUserLoginWindow extends BaseApp {
                     public void apply(TimeWindow window, Iterable<UserLoginBean> values, Collector<UserLoginBean> out) throws Exception {
                         UserLoginBean bean = values.iterator().next();
                         String stt = DateFormatUtil.tsToDateTime(window.getStart());
-//                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
+                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
                         String curDate = DateFormatUtil.tsToDate(window.getStart());
                         bean.setStt(stt);
-//                        bean.setEdt(edt);
+                        bean.setEdt(edt);
                         bean.setCurDate(curDate);
                         out.collect(bean);
                     }

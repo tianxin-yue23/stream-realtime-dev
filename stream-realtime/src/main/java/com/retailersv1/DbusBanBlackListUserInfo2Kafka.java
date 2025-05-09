@@ -33,7 +33,7 @@ public class DbusBanBlackListUserInfo2Kafka {
         System.setProperty("HADOOP_USER_NAME","root");
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-//        EnvironmentSettingUtils.defaultParameter(env);
+        EnvironmentSettingUtils.defaultParameter(env);
 
         SingleOutputStreamOperator<String> kafkaCdcDbSource = env.fromSource(
                 KafkaUtils.buildKafkaSource(
@@ -57,11 +57,12 @@ public class DbusBanBlackListUserInfo2Kafka {
 //      bloomFilterDs.print();
 //        //  检查敏感词
 //        // 使用Redis中存储的敏感词进行过滤
+//        敏感词检查（第一次）
         SingleOutputStreamOperator<JSONObject> SensitiveWordsDs = bloomFilterDs.map(new MapCheckRedisSensitiveWordsFunc())
                 .uid("MapCheckRedisSensitiveWord")
                 .name("MapCheckRedisSensitiveWord");
 //       SensitiveWordsDs.print();
-
+//   敏感词检查（第2次）
       SingleOutputStreamOperator<JSONObject> secondCheckMap = SensitiveWordsDs.map(new RichMapFunction<JSONObject, JSONObject>() {
             @Override
             public JSONObject map(JSONObject jsonObject) {
@@ -76,18 +77,12 @@ public class DbusBanBlackListUserInfo2Kafka {
                 return jsonObject;
             }
         }).uid("second sensitive word check").name("second sensitive word check");
-//        secondCheckMap.print();
+        secondCheckMap.print();
 
-     secondCheckMap.map(new BeanToJsonStrMapFunction<>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("Ban_blacklist"));
+//     secondCheckMap.map(new BeanToJsonStrMapFunction<>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("Ban_blacklist"));
 
-       /* secondCheckMap.map(data -> data.toJSONString())
-                        .sinkTo(
-                                KafkaUtils.buildKafkaSink(kafka_botstrap_servers, kafka_result_sensitive_words_topic)
-                        )
-                        .uid("sink to kafka result sensitive words topic")
-                        .name("sink to kafka result sensitive words topic");
-        */
+
 
 
         env.execute();

@@ -21,12 +21,16 @@ import org.apache.flink.streaming.api.functions.ProcessFunction;
 import org.apache.flink.util.Collector;
 import org.apache.hadoop.hbase.client.Connection;
 
-
+/**
+ * 维度数据处理应用程序
+ * 该应用从Kafka消费业务数据，根据配置表信息处理维度数据，并将结果写入HBase
+ */
 
 public class dimApp extends BaseApp {
     public static void main(String[] args) throws Exception {
       new dimApp().start(10001,4,"my_group",Constant.TOPIC_DB);
     }
+    // 1. 将Kafka消息解析为JSON对象
     @Override
     public void handle(StreamExecutionEnvironment env, DataStreamSource<String> kafkaSource) {
         SingleOutputStreamOperator<JSONObject> jsonobjds = kafkaSource.process(new ProcessFunction<String, JSONObject>() {
@@ -60,19 +64,19 @@ public class dimApp extends BaseApp {
                 String sinkTable = tp.getSinkTable();
                 String[] sinkFamilies = tp.getSinkFamily().split(",");
                 if ("d".equals(op)){
-
                     HBaseUtil.dropHBaseTable(hbaseConn, Constant.HBASE_NAMESPACE,sinkTable);
                 }else if ("r".equals(op)||"c".equals(op)){
+                    // 创建表
                     HBaseUtil.createHBaseTable(hbaseConn,Constant.HBASE_NAMESPACE,sinkTable,sinkFamilies);
                 }else {
+                    // 先删除再创建表
                     HBaseUtil.dropHBaseTable(hbaseConn, Constant.HBASE_NAMESPACE,sinkTable);
                     HBaseUtil.createHBaseTable(hbaseConn,Constant.HBASE_NAMESPACE,sinkTable,sinkFamilies);
                 }
                 return tp;
             }
         });
-
-//    tpds.print();
+    tpds.print();
         //将配置流中的配置信息进行广播---broadcast
         MapStateDescriptor<String, TableProcessDim> mapStateDescriptor =
                 new MapStateDescriptor<String, TableProcessDim>("mapStateDescriptor", String.class, TableProcessDim.class);
@@ -84,7 +88,7 @@ public class dimApp extends BaseApp {
                 new TableProcessFunction(mapStateDescriptor)
 
         );
-        dimDs.print();
+//        dimDs.print();
 //       dimDs.addSink(new HBaseSinkFunction());
 
     }

@@ -63,9 +63,13 @@ public class TableProcessFunction extends BroadcastProcessFunction<JSONObject, T
     public void processElement(JSONObject jsonObject, BroadcastProcessFunction<JSONObject, TableProcessDim, Tuple2<JSONObject,TableProcessDim>>.ReadOnlyContext readOnlyContext, Collector<Tuple2<JSONObject,TableProcessDim>> collector) throws Exception {
 //        广播状态中获取当前处理数据对应的表配置信息
         ReadOnlyBroadcastState<String, TableProcessDim> state = readOnlyContext.getBroadcastState(mapStateDescriptor);
+        // . 从输入数据中提取表名
         String table = jsonObject.getJSONObject("source").getString("table");
+//        //  根据表名查找对应的配置信息
         TableProcessDim tableProcessDim = state.get(table);
+//        // 如果配置存在，则处理数据并输出
         if (tableProcessDim != null) {
+//             // 提取变更后的数据
             JSONObject after = jsonObject.getJSONObject("after");
             String op = jsonObject.getString("op");
             after.put("op",op);
@@ -80,10 +84,13 @@ public class TableProcessFunction extends BroadcastProcessFunction<JSONObject, T
         BroadcastState<String, TableProcessDim> broadcastState = ctx.getBroadcastState(mapStateDescriptor);
 //              维度表名称
         String sourceTable = tp.getSourceTable();
+        //  根据操作类型处理配置变更
         if ("d".equals(op)) {
+//             // 如果是删除操作，从广播状态和本地缓存中移除配置
             broadcastState.remove(sourceTable);
             configMap.remove(sourceTable);
         } else {
+//             // 如果是新增/更新操作，更新广播状态和本地缓存
             broadcastState.put(sourceTable, tp);
             configMap.put(sourceTable, tp);
         }

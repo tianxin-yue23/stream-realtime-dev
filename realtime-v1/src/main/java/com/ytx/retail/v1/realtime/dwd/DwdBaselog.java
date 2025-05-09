@@ -28,6 +28,7 @@ public class DwdBaselog extends BaseApp {
     }
     @Override
     public void handle(StreamExecutionEnvironment env, DataStreamSource<String> kafkaSource) {
+        // 定义输出标签，用于标记脏数据
         OutputTag<String> dirtyTag = new OutputTag<String>("dirtyTag"){};
         SingleOutputStreamOperator<JSONObject> jsonObjDs= kafkaSource.process(new ProcessFunction<String, JSONObject>() {
             @Override
@@ -44,9 +45,11 @@ public class DwdBaselog extends BaseApp {
 //     jsonObjDs.print("标准json");
         SideOutputDataStream<String> dirtyDs = jsonObjDs.getSideOutput(dirtyTag);
 //        dirtyDs.print("脏数据");
-//        对新老访客标记进行修复
+// 根据设备标识mid对数据进行分组，用于后续对新老访客标记进行修复
         KeyedStream<JSONObject, String> keyedDs = jsonObjDs.keyBy(jsonObj -> jsonObj.getJSONObject("common").getString("mid"));
+        // 修复新老访客标记的逻辑处理
         SingleOutputStreamOperator<JSONObject> fixeDs = keyedDs.map(new RichMapFunction<JSONObject, JSONObject>() {
+            // 定义ValueState来保存上次访问日期
             private ValueState<String> lastVisitState;
 
             @Override
@@ -57,6 +60,7 @@ public class DwdBaselog extends BaseApp {
 
             @Override
             public JSONObject map(JSONObject jsonObject) throws Exception {
+                // 获取当前日志中标记新老访客的字段值
                 String isNew = jsonObject.getJSONObject("common").getString("is_new");
 //                从状态中获取首次询问日期
                 String lastVisitDate = lastVisitState.value();
@@ -78,9 +82,8 @@ public class DwdBaselog extends BaseApp {
                     //如果键控状态不为 null，且首次访问日期是当日，说明访问的是新访客，不做操作；
                 } else {
                     //② 如果 is_new 的值为 0
-                    //如果键控状态为 null，说明访问 APP 的是老访客但本次是该访客的页面日志首次进入程序。当前端新老访客状态标记丢失时，日志进入程序被判定为新访客，Flink 程序就可以纠正被误判的访客状态标记，只要将状态中的日期设置为今天之前即可。本程序选择将状态更新为昨日；
-                    //如果键控状态不为 null，说明程序已经维护了首次访问日期，不做操作。
                     if (StringUtils.isEmpty(lastVisitDate)) {
+                        //如果键控状态为 null，说明访问 APP 的是老访客但本次是该访客的页面日志首次进入程序。当前端新老访客状态标记丢失时，日志进入程序被判定为新访客，Flink 程序就可以纠正被误判的访客状态标记，只要将状态中的日期设置为今天之前即可。本程序选择将状态更新为昨日；
                         String yesterDay = DateFormatUtil.tsToDate(ts - 24 * 60 * 1000);
                         lastVisitState.update(yesterDay);
                     }
@@ -120,7 +123,7 @@ public class DwdBaselog extends BaseApp {
                             if (displayArr != null && displayArr.size() > 0) {
                                 for (int i = 0; i < displayArr.size(); i++) {
                                     JSONObject displayJSONObj = displayArr.getJSONObject(i);
-
+                                    // 构建新的曝光日志对象并输出到曝光日志侧输出流
                                     JSONObject newDispplayjsonObj = new JSONObject();
                                     newDispplayjsonObj.put("common", commonJsonObj);
                                     newDispplayjsonObj.put("page", pageJsonObj);

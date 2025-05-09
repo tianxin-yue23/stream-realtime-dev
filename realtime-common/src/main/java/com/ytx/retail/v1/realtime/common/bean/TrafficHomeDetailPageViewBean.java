@@ -10,7 +10,7 @@ public class TrafficHomeDetailPageViewBean {
     // 窗口起始时间
     String stt;
     // 窗口结束时间
-//    String edt;
+    String edt;
     // 当天日期
     String curDate;
     // 首页独立访客数

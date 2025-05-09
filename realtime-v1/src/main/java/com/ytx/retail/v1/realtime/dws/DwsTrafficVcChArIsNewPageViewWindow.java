@@ -122,8 +122,10 @@ public class DwsTrafficVcChArIsNewPageViewWindow extends BaseApp {
                     public void apply(Tuple4<String, String, String, String> stringStringStringStringTuple4, TimeWindow window, Iterable<TrafficPageViewBean> input, Collector<TrafficPageViewBean> out) throws Exception {
                         TrafficPageViewBean pageViewBean = input.iterator().next();
                         String stt = DateFormatUtil.tsToDateTime(window.getStart());
+                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
                         String curDate = DateFormatUtil.tsToDate(window.getStart());
                         pageViewBean.setStt(stt);
+                        pageViewBean.setEdt(edt);
                         pageViewBean.setCur_date(curDate);
                         out.collect(pageViewBean);
                     }

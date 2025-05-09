@@ -43,7 +43,6 @@ public class DwsTradeCartAddUuWindow extends BaseApp {
 //          判断是否为加购独立用户这里不需要封装实体类
         SingleOutputStreamOperator<JSONObject> cartDs = keyedDs.process(new KeyedProcessFunction<String, JSONObject, JSONObject>() {
             private ValueState<String> lastCartDateState;
-
             @Override
             public void open(Configuration parameters) throws Exception {
 //                初始化状态变量

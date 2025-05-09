@@ -67,7 +67,6 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
                 valueStateDescriptor.enableTimeToLive(StateTtlConfig.newBuilder(Time.seconds(10)).build());
                 lastJsonObjState = getRuntimeContext().getState(valueStateDescriptor);
             }
-
             @Override
             public void processElement(JSONObject jsonObj, KeyedProcessFunction<String, JSONObject, JSONObject>.Context ctx, Collector<JSONObject> out) throws Exception {
                 JSONObject lastJsonObj = lastJsonObjState.value();
@@ -87,6 +86,7 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
                 .withTimestampAssigner(new SerializableTimestampAssigner<JSONObject>() {
                     @Override
                     public long extractTimestamp(JSONObject jsonObject, long l) {
+
                         return jsonObject.getLong("ts_ms");
                     }
                 }));
@@ -115,7 +115,7 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
 //        分组
         KeyedStream<TradeProvinceOrderBean, String> provinceIdKeyedDS = beabDs.keyBy(TradeProvinceOrderBean::getProvinceId);
 
-        // 7.开窗
+        // 开窗
         WindowedStream<TradeProvinceOrderBean, String, TimeWindow> windowDS = provinceIdKeyedDS.window(TumblingEventTimeWindows.of(org.apache.flink.streaming.api.windowing.time.Time.seconds(10)));
 //      聚合
         SingleOutputStreamOperator<TradeProvinceOrderBean> reduceDS = windowDS.reduce(
@@ -165,8 +165,8 @@ public class DwsTradeProvinceOrderWindow extends BaseApp {
         );
         withProvinceDs.print();
 //        写到doris
-      withProvinceDs.map(new BeanToJsonStrMapFunction<>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_province_order_window"));
+//      withProvinceDs.map(new BeanToJsonStrMapFunction<>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_trade_province_order_window"));
 
     }
 }

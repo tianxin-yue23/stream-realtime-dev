@@ -18,7 +18,6 @@ public class DwdTradeOrderRefund extends BaseSQLApp {
 
     @Override
     public void handle(StreamTableEnvironment tableEnv) {
-       tableEnv.getConfig().setIdleStateRetention(Duration.ofSeconds(5));
         readOdsDb(tableEnv,Constant.TOPIC_DB);
         readBaseDic(tableEnv);
 //过滤退单表数据 order_refund_info
@@ -103,7 +102,7 @@ public class DwdTradeOrderRefund extends BaseSQLApp {
                         "PRIMARY KEY (id) NOT ENFORCED " +
                         ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_ORDER_REFUND));
 
-      result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_REFUND);
+//      result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_REFUND);
 
 
     }

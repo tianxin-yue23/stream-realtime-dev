@@ -13,7 +13,6 @@ public class DwsTrafficSourceKeywordPageViewWindow extends BaseSQLApp {
                 10021,
                 4,
                 "dws_traffic_source_keyword_page_view_window"
-
         );
     }
     @Override

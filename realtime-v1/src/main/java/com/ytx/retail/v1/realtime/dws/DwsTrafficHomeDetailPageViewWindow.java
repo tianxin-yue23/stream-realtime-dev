@@ -93,6 +93,7 @@ public class DwsTrafficHomeDetailPageViewWindow extends BaseApp {
                     out.collect(new TrafficHomeDetailPageViewBean(
                             "",
                             "",
+                            "",
                             homeUvCt,
                             detailUvCt,
                             ts
@@ -128,10 +129,10 @@ public class DwsTrafficHomeDetailPageViewWindow extends BaseApp {
                     public void apply(TimeWindow window, Iterable<TrafficHomeDetailPageViewBean> values, Collector<TrafficHomeDetailPageViewBean> out) throws Exception {
                         TrafficHomeDetailPageViewBean viewBean = values.iterator().next();
                         String stt = DateFormatUtil.tsToDateTime(window.getStart());
-//                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
+                        String edt = DateFormatUtil.tsToDateTime(window.getEnd());
                         String curDate = DateFormatUtil.tsToDate(window.getStart());
                         viewBean.setStt(stt);
-//                        viewBean.setEdt(edt);
+                       viewBean.setEdt(edt);
                         viewBean.setCurDate(curDate);
                         out.collect(viewBean);
                     }
@@ -140,8 +141,8 @@ public class DwsTrafficHomeDetailPageViewWindow extends BaseApp {
 //        // 8.将聚合的结果写到Doris
         reduceDS.print();
 
-        reduceDS
-                .map(new BeanToJsonStrMapFunction<TrafficHomeDetailPageViewBean>())
-                .sinkTo(FlinkSinkUtil.getDorisSink("dws_traffic_home_detail_page_view_window"));
+//        reduceDS
+//                .map(new BeanToJsonStrMapFunction<TrafficHomeDetailPageViewBean>())
+//                .sinkTo(FlinkSinkUtil.getDorisSink("dws_traffic_home_detail_page_view_window"));
     }
 }

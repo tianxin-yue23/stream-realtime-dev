@@ -108,7 +108,7 @@ public class DwdTradeOrderPaySucDetail extends BaseSQLApp {
                 "PRIMARY KEY (order_detail_id) NOT ENFORCED " +
                 ")" + Sqlutil.getUpsertKafkaDDL(Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS));
 
-        result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS);
+//        result.executeInsert(Constant.TOPIC_DWD_TRADE_ORDER_PAYMENT_SUCCESS);
 
 
     }

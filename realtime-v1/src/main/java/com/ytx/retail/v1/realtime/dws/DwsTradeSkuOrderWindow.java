@@ -48,15 +48,18 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
 //        jsonobjDs.print();
 //按照唯一键(订单明细的id)进行分组
         KeyedStream<JSONObject, String> keyedDs = jsonobjDs.keyBy(jsonObject -> jsonObject.getString("id"));
+//        用 Flink 的状态机制存储上一次的记录。当收到重复 ID 的记录时，先输出一条金额为负的抵消记录，再输出新记录，确保最终统计结果的准确性
         //去重方式2：状态 + 抵消    优点：时效性好    缺点：如果出现重复，需要向下游传递3条数据(数据膨胀)
+//        当收到相同 ID 的新记录时，先发送一条金额为负的旧记录，再发送新记录
         SingleOutputStreamOperator<JSONObject> distinctDs = keyedDs.process(new KeyedProcessFunction<String, JSONObject, JSONObject>() {
             private ValueState<JSONObject> lastJsonObjState;
 
             @Override
             public void open(Configuration parameters) throws Exception {
+                // 初始化状态，设置TTL为10秒，自动清理过期数据
                 ValueStateDescriptor<JSONObject> valueStateDescriptor =
                         new ValueStateDescriptor<>("lastJsonObjState", JSONObject.class);
-//                   // 设置状态TTL为10秒
+//
                 valueStateDescriptor.enableTimeToLive(StateTtlConfig.newBuilder(Time.seconds(10)).build());
                 lastJsonObjState = getRuntimeContext().getState(valueStateDescriptor);
             }
@@ -72,7 +75,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                     String splitTotalAmount = lastJsonObj.getString("split_total_amount");
 
 
-
+                    // 将金额字段取负，用于抵消之前的错误统计
                     lastJsonObj.put("split_original_amount", "-" + splitOriginalAmount);
                     lastJsonObj.put("split_coupon_amount", "-" + splitCouponAmount);
                     lastJsonObj.put("split_activity_amount", "-" + splitActivityAmount);
@@ -122,7 +125,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
 
 //    分组
         KeyedStream<TradeSkuOrderBean, String> skuIdKeyedDs = beanDs.keyBy(TradeSkuOrderBean::getSkuId);
-//        全局开窗（1秒滚动窗口）
+//      （1秒滚动窗口）
         AllWindowedStream<TradeSkuOrderBean, TimeWindow> windowDS  =
                 skuIdKeyedDs.windowAll(TumblingEventTimeWindows.of(org.apache.flink.streaming.api.windowing.time.Time.seconds(1)));
 //        聚合（窗口内同sku的金额累加），并补充窗口时间字段
@@ -142,6 +145,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                     public void process(ProcessAllWindowFunction<TradeSkuOrderBean, TradeSkuOrderBean, TimeWindow>.Context ctx, Iterable<TradeSkuOrderBean> iterable, Collector<TradeSkuOrderBean> out) throws Exception {
                         TradeSkuOrderBean orderBean = iterable.iterator().next();
                         TimeWindow window = ctx.window();
+                        // 补充窗口时间信息
                         String stt = DateFormatUtil.tsToDateTime(window.getStart());
                         String edt = DateFormatUtil.tsToDateTime(window.getEnd());
                         String curDate = DateFormatUtil.tsToDate(window.getStart());
@@ -175,7 +179,7 @@ public class DwsTradeSkuOrderWindow extends BaseApp {
                         return orderBean.getSkuId();
                     }
                 },
-                60,
+                60,// 超时时间
                 TimeUnit.SECONDS
         );
 

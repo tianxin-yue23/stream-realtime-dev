@@ -6,8 +6,7 @@ import com.ytx.retail.v1.realtime.common.util.Sqlutil;
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
-import java.time.Duration;
-
+//交易域下单事务事实表
 public class DwdTradeOrderDetail extends BaseSQLApp {
 
     public static void main(String[] args) {
@@ -16,8 +15,7 @@ public class DwdTradeOrderDetail extends BaseSQLApp {
     }
     @Override
     public void handle(StreamTableEnvironment tableEnv) {
-//    设置状态的保留时间
-//        tableEnv.getConfig().setIdleStateRetention(Duration.ofSeconds(10));
+
 //        从kafka读取数据
         readOdsDb(tableEnv,Constant.TOPIC_DB);
 //    过滤出订单明细数据
