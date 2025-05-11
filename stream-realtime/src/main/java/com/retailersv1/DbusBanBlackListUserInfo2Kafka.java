@@ -79,8 +79,8 @@ public class DbusBanBlackListUserInfo2Kafka {
         }).uid("second sensitive word check").name("second sensitive word check");
         secondCheckMap.print();
 
-//     secondCheckMap.map(new BeanToJsonStrMapFunction<>())
-//                .sinkTo(FlinkSinkUtil.getDorisSink("Ban_blacklist"));
+     secondCheckMap.map(new BeanToJsonStrMapFunction<>())
+                .sinkTo(FlinkSinkUtil.getDorisSink("Ban_blacklist"));
 
 
 
